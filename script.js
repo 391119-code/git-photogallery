@@ -11,6 +11,7 @@ const palettes = [
 ];
 
 document.querySelectorAll("[data-image-number]").forEach((image, index) => {
+    if (image.src && image.src !== window.location.href) return;
     const [start, end] = palettes[index];
     const number = image.dataset.imageNumber;
     const svg = `
