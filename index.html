@@ -55,27 +55,87 @@
             margin-bottom: 10px;
             color: #333;
         }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .modal-content {
+            background-color: #222;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            animation: slideIn 0.3s ease;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .modal-img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: contain;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .modal-text {
+            color: #fff;
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .close:hover {
+            color: #fff;
+        }
     </style>
 </head>
 <body>
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <img class="modal-img" id="modalImage" src="" alt="">
+            <p class="modal-text" id="modalDescription"></p>
+        </div>
+    </div>
     <div class="container">
         <!-- Row 1: Rocket League -->
         <div class="row-title">Rocket League</div>
         <div class="grid">
             <div class="card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw4ePe5vFuEhGcKTZSGTUcjA2X2Nkpfpji844jKZLIOAjL7_2J85SyRdy6&s=10" alt="Rocket League 1">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw4ePe5vFuEhGcKTZSGTUcjA2X2Nkpfpji844jKZLIOAjL7_2J85SyRdy6&s=10" alt="Rocket League 1" onclick="openModal('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw4ePe5vFuEhGcKTZSGTUcjA2X2Nkpfpji844jKZLIOAjL7_2J85SyRdy6&s=10', 'The iconic Rocket League logo featuring a stylized rocket-powered car, representing the high-speed soccer-meets-racing game that took the gaming world by storm.')">
                 <div class="card-content">
                     <h3>Rocket League 1</h3>
                 </div>
             </div>
             <div class="card">
-                <img src="https://img.redbull.com/images/c_limit,w_1500,h_1000/f_auto,q_auto/redbullcom/2017/08/25/f8052807-f589-4fb5-84d4-b918b03da7fc/rocket-league-octane" alt="Rocket League 2">
+                <img src="https://img.redbull.com/images/c_limit,w_1500,h_1000/f_auto,q_auto/redbullcom/2017/08/25/f8052807-f589-4fb5-84d4-b918b03da7fc/rocket-league-octane" alt="Rocket League 2" onclick="openModal('https://img.redbull.com/images/c_limit,w_1500,h_1000/f_auto,q_auto/redbullcom/2017/08/25/f8052807-f589-4fb5-84d4-b918b03da7fc/rocket-league-octane', 'The Octane car body, one of the most popular and iconic vehicles in Rocket League, known for its balanced hitbox and versatile gameplay.')">
                 <div class="card-content">
                     <h3>Rocket League 2</h3>
                 </div>
             </div>
             <div class="card">
-                <img src="https://static.wikia.nocookie.net/ultimatepopculture/images/e/e8/Rocket_League.jpg" alt="Rocket League 3">
+                <img src="https://static.wikia.nocookie.net/ultimatepopculture/images/e/e8/Rocket_League.jpg" alt="Rocket League 3" onclick="openModal('https://static.wikia.nocookie.net/ultimatepopculture/images/e/e8/Rocket_League.jpg', 'Action-packed Rocket League gameplay showing cars soaring through the air with boost trails, capturing the fast-paced and competitive nature of the game.')">
                 <div class="card-content">
                     <h3>Rocket League 3</h3>
                 </div>
@@ -86,19 +146,19 @@
         <div class="row-title">Fortnite</div>
         <div class="grid">
             <div class="card">
-                <img src="https://m.media-amazon.com/images/M/MV5BMGEzMDcyODAtNzY0Yy00N2E5LTllYzgtODMyNzNiOWI2MjJjXkEyXkFqcGc@._V1_.jpg" alt="Fortnite 1">
+                <img src="https://m.media-amazon.com/images/M/MV5BMGEzMDcyODAtNzY0Yy00N2E5LTllYzgtODMyNzNiOWI2MjJjXkEyXkFqcGc@._V1_.jpg" alt="Fortnite 1" onclick="openModal('https://m.media-amazon.com/images/M/MV5BMGEzMDcyODAtNzY0Yy00N2E5LTllYzgtODMyNzNiOWI2MjJjXkEyXkFqcGc@._V1_.jpg', 'Fortnite movie poster featuring the iconic battle royale gameplay with characters in colorful outfits, showcasing the vibrant and action-packed world of the game.')">
                 <div class="card-content">
                     <h3>Fortnite 1</h3>
                 </div>
             </div>
             <div class="card">
-                <img src="https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/img_3658_2.jpeg" alt="Fortnite 2">
+                <img src="https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/img_3658_2.jpeg" alt="Fortnite 2" onclick="openModal('https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/img_3658_2.jpeg', 'A group of Fortnite characters in various unique skins, demonstrating the games extensive customization options and creative character designs.')">
                 <div class="card-content">
                     <h3>Fortnite 2</h3>
                 </div>
             </div>
             <div class="card">
-                <img src="https://dropinblog.net/34253310/files/featured/imagem-2024-09-26-103919931.png" alt="Fortnite 3">
+                <img src="https://dropinblog.net/34253310/files/featured/imagem-2024-09-26-103919931.png" alt="Fortnite 3" onclick="openModal('https://dropinblog.net/34253310/files/featured/imagem-2024-09-26-103919931.png', 'Fortnite character performing an emote dance, highlighting the fun and social aspects of the game that players love to share with friends.')">
                 <div class="card-content">
                     <h3>Fortnite 3</h3>
                 </div>
@@ -109,25 +169,46 @@
         <div class="row-title">Minecraft</div>
         <div class="grid">
             <div class="card">
-                <img src="https://store-images.s-microsoft.com/image/apps.29741.13774133678237924.b2fb64a6-d8b2-4e05-a188-b727d48563ed.f5bc1582-f67e-4ef4-8d8a-7aac86b324f9?w=562" alt="Minecraft 1">
+                <img src="https://store-images.s-microsoft.com/image/apps.29741.13774133678237924.b2fb64a6-d8b2-4e05-a188-b727d48563ed.f5bc1582-f67e-4ef4-8d8a-7aac86b324f9?w=562" alt="Minecraft 1" onclick="openModal('https://store-images.s-microsoft.com/image/apps.29741.13774133678237924.b2fb64a6-d8b2-4e05-a188-b727d48563ed.f5bc1582-f67e-4ef4-8d8a-7aac86b324f9?w=562', 'Minecraft official app icon featuring the iconic blocky Creeper face, the most recognizable mob in the game that has become a symbol of Minecraft itself.')">
                 <div class="card-content">
                     <h3>Minecraft 1</h3>
                 </div>
             </div>
             <div class="card">
-                <img src="https://cdn.shopify.com/s/files/1/0759/8099/6937/files/minecraft-Paysage-montagnes_1024x1024.jpg?v=1771166065" alt="Minecraft 2">
+                <img src="https://cdn.shopify.com/s/files/1/0759/8099/6937/files/minecraft-Paysage-montagnes_1024x1024.jpg?v=1771166065" alt="Minecraft 2" onclick="openModal('https://cdn.shopify.com/s/files/1/0759/8099/6937/files/minecraft-Paysage-montagnes_1024x1024.jpg?v=1771166065', 'Beautiful Minecraft landscape showcasing towering mountains, lush forests, and the games signature blocky terrain, demonstrating the creative building possibilities.')">
                 <div class="card-content">
                     <h3>Minecraft 2</h3>
                 </div>
             </div>
             <div class="card">
-                <img src="https://assets.nintendo.com/image/upload/c_limit,f_auto,h_300,q_auto,w_500/v1/store/software/switch/70010000000964/Video/posters/a2761b7c2a1626561589be1efdebc15d8803ba2bf3fc570c81e50614ac2e5187" alt="Minecraft 3">
+                <img src="https://assets.nintendo.com/image/upload/c_limit,f_auto,h_300,q_auto,w_500/v1/store/software/switch/70010000000964/Video/posters/a2761b7c2a1626561589be1efdebc15d8803ba2bf3fc570c81e50614ac2e5187" alt="Minecraft 3" onclick="openModal('https://assets.nintendo.com/image/upload/c_limit,f_auto,h_300,q_auto,w_500/v1/store/software/switch/70010000000964/Video/posters/a2761b7c2a1626561589be1efdebc15d8803ba2bf3fc570c81e50614ac2e5187', 'Minecraft Nintendo Switch poster art featuring Steve, the default player character, in his classic pixelated design ready for adventure in the blocky world.')">
                 <div class="card-content">
                     <h3>Minecraft 3</h3>
                 </div>
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script>
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalDesc = document.getElementById('modalDescription');
+        const closeBtn = document.getElementById('closeModal');
+
+        function openModal(imgSrc, description) {
+            modal.style.display = 'block';
+            modalImg.src = imgSrc;
+            modalDesc.textContent = description;
+        }
+
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
