@@ -171,11 +171,10 @@
             <img class="modal-img" id="modalImage" src="" alt="">
             <p class="modal-text" id="modalDescription"></p>
             <div class="modal-actions">
-                <button class="btn btn-primary" id="findSimilarBtn">Find Similar (AI)</button>
+                <button class="btn btn-primary" id="findSimilarBtn">Find Similar</button>
             </div>
             <div class="similar-images" id="similarImages">
-                <div class="similar-title">AI Similar Images</div>
-                <div class="loading" id="loadingIndicator">Loading...</div>
+                <div class="similar-title">Similar Images</div>
                 <div class="similar-grid" id="similarGrid"></div>
             </div>
         </div>
@@ -276,24 +275,28 @@
         }
 
         findSimilarBtn.onclick = function() {
-            const loading = document.getElementById('loadingIndicator');
-            loading.style.display = 'block';
+            const allImages = document.querySelectorAll('img[data-category]');
+            const similar = [];
+
+            allImages.forEach(img => {
+                if (img.dataset.category === currentCategory && img.dataset.src !== currentImageSrc) {
+                    similar.push({
+                        src: img.dataset.src,
+                        alt: img.alt,
+                        desc: img.dataset.desc
+                    });
+                }
+            });
+
             similarGrid.innerHTML = '';
-            similarImages.style.display = 'block';
-
-            // Use Unsplash Source API to fetch real similar images
-            const category = currentCategory.toLowerCase();
-            const queries = [category, category + ' game', category + ' artwork'];
-
-            queries.forEach((query, index) => {
-                const imgUrl = `https://source.unsplash.com/300x200/?${encodeURIComponent(query)}&sig=${Date.now() + index}`;
+            similar.forEach(img => {
                 const card = document.createElement('div');
                 card.className = 'similar-card';
-                card.innerHTML = `<img src="${imgUrl}" alt="${query}" onload="this.style.opacity='1'" style="opacity:0.3; transition: opacity 0.3s;">`;
+                card.innerHTML = `<img src="${img.src}" alt="${img.alt}" onclick="openModalFromSimilar('${img.src.replace(/'/g, "\\'")}', '${img.desc.replace(/'/g, "\\'")}', '${currentCategory}')">`;
                 similarGrid.appendChild(card);
             });
 
-            loading.style.display = 'none';
+            similarImages.style.display = 'block';
         }
 
         function openModalFromSimilar(src, desc, category) {
