@@ -266,7 +266,7 @@
                 <div class="card-content">
                     <h3>Rocket League 1</h3>
                     <div class="rating-container"><span class="rating-badge" id="rating-rl-1">Not rated</span></div>
-                    <p class="game-description" id="desc-Rocket League">Loading...</p>
+                    <p class="game-description">Rocket League is a high-speed hybrid of arcade-style soccer and vehicular mayhem. Use your rocket-powered car to hit a giant ball into your opponent's goal.</p>
                 </div>
             </div>
             <div class="card">
@@ -274,6 +274,7 @@
                 <div class="card-content">
                     <h3>Rocket League 2</h3>
                     <div class="rating-container"><span class="rating-badge" id="rating-rl-2">Not rated</span></div>
+                    <p class="game-description">Master boost management, aerial control, and precise hits. Matches are 3v3 with standard soccer rules - first team to score the most goals wins.</p>
                 </div>
             </div>
             <div class="card">
@@ -281,6 +282,7 @@
                 <div class="card-content">
                     <h3>Rocket League 3</h3>
                     <div class="rating-container"><span class="rating-badge" id="rating-rl-3">Not rated</span></div>
+                    <p class="game-description">Key controls: Drive, boost, jump, and use your car's front, back, or sides to hit the ball. Dribble the ball on your car for control and rotate back on defense.</p>
                 </div>
             </div>
         </div>
@@ -296,7 +298,7 @@
                 <div class="card-content">
                     <h3>Fortnite 1</h3>
                     <div class="rating-container"><span class="rating-badge" id="rating-fn-1">Not rated</span></div>
-                    <p class="game-description" id="desc-Fortnite">Loading...</p>
+                    <p class="game-description">Fortnite Battle Royale drops 100 players onto an island where you fight to be the last one standing. Search for weapons and resources.</p>
                 </div>
             </div>
             <div class="card">
@@ -304,6 +306,7 @@
                 <div class="card-content">
                     <h3>Fortnite 2</h3>
                     <div class="rating-container"><span class="rating-badge" id="rating-fn-2">Not rated</span></div>
+                    <p class="game-description">Build structures using wood, brick, or metal to create cover during fights. The storm circle shrinks, forcing players together.</p>
                 </div>
             </div>
             <div class="card">
@@ -311,6 +314,7 @@
                 <div class="card-content">
                     <h3>Fortnite 3</h3>
                     <div class="rating-container"><span class="rating-badge" id="rating-fn-3">Not rated</span></div>
+                    <p class="game-description">Eliminate opponents, loot their items, and survive until the end to claim Victory Royale. Collect materials by harvesting objects.</p>
                 </div>
             </div>
         </div>
@@ -326,7 +330,7 @@
                 <div class="card-content">
                     <h3>Minecraft 1</h3>
                     <div class="rating-container"><span class="rating-badge" id="rating-mc-1">Not rated</span></div>
-                    <p class="game-description" id="desc-Minecraft">Loading...</p>
+                    <p class="game-description">Minecraft is a sandbox game where you explore, build, and survive. Gather resources like wood, stone, and ore by breaking blocks.</p>
                 </div>
             </div>
             <div class="card">
@@ -334,6 +338,7 @@
                 <div class="card-content">
                     <h3>Minecraft 2</h3>
                     <div class="rating-container"><span class="rating-badge" id="rating-mc-2">Not rated</span></div>
+                    <p class="game-description">Craft tools, weapons, and armor to survive against monsters that spawn at night. Build shelters, farms, and elaborate structures.</p>
                 </div>
             </div>
             <div class="card">
@@ -341,6 +346,7 @@
                 <div class="card-content">
                     <h3>Minecraft 3</h3>
                     <div class="rating-container"><span class="rating-badge" id="rating-mc-3">Not rated</span></div>
+                    <p class="game-description">Explore caves for valuable resources, defeat bosses like the Ender Dragon. In Creative mode, you have unlimited resources to build anything.</p>
                 </div>
             </div>
         </div>
@@ -526,28 +532,6 @@
             button.style.marginRight = 'auto';
             
             container.insertBefore(button, container.firstChild);
-        }
-
-        // Load game descriptions from JSON file
-        async function loadGameDescriptions() {
-            try {
-                const response = await fetch('game-descriptions.json');
-                if (!response.ok) throw new Error('Failed to load descriptions');
-                return await response.json();
-            } catch (error) {
-                console.error('Error loading game descriptions:', error);
-                return {};
-            }
-        }
-
-        async function displayGameDescriptions() {
-            const descriptions = await loadGameDescriptions();
-            categories.forEach(category => {
-                const descElement = document.getElementById(`desc-${category}`);
-                if (descElement && descriptions[category]) {
-                    descElement.textContent = descriptions[category].howToPlay;
-                }
-            });
         }
 
         // Initialize on page load
