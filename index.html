@@ -170,6 +170,46 @@
             text-align: center;
             padding: 10px;
         }
+        .difficulty-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 10px;
+            color: white;
+        }
+        .difficulty-easy {
+            background-color: #4caf50;
+        }
+        .difficulty-medium {
+            background-color: #ff9800;
+        }
+        .difficulty-hard {
+            background-color: #f44336;
+        }
+        .difficulty-expert {
+            background-color: #9c27b0;
+        }
+        .generate-btn {
+            background-color: #2196f3;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 14px;
+        }
+        .generate-btn:hover {
+            background-color: #0b7dda;
+        }
+        .row-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -190,7 +230,10 @@
     </div>
     <div class="container">
         <!-- Row 1: Rocket League -->
-        <div class="row-title">Rocket League</div>
+        <div class="row-container">
+            <div class="row-title">Rocket League</div>
+            <span id="difficulty-Rocket League" class="difficulty-badge"></span>
+        </div>
         <div class="grid">
             <div class="card">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw4ePe5vFuEhGcKTZSGTUcjA2X2Nkpfpji844jKZLIOAjL7_2J85SyRdy6&s=10" alt="Rocket League 1" data-category="Rocket League" data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw4ePe5vFuEhGcKTZSGTUcjA2X2Nkpfpji844jKZLIOAjL7_2J85SyRdy6&s=10" data-desc="The iconic Rocket League logo featuring a stylized rocket-powered car, representing the high-speed soccer-meets-racing game that took the gaming world by storm." onclick="openModal(this)">
@@ -213,7 +256,10 @@
         </div>
 
         <!-- Row 2: Fortnite -->
-        <div class="row-title">Fortnite</div>
+        <div class="row-container">
+            <div class="row-title">Fortnite</div>
+            <span id="difficulty-Fortnite" class="difficulty-badge"></span>
+        </div>
         <div class="grid">
             <div class="card">
                 <img src="https://m.media-amazon.com/images/M/MV5BMGEzMDcyODAtNzY0Yy00N2E5LTllYzgtODMyNzNiOWI2MjJjXkEyXkFqcGc@._V1_.jpg" alt="Fortnite 1" data-category="Fortnite" data-src="https://m.media-amazon.com/images/M/MV5BMGEzMDcyODAtNzY0Yy00N2E5LTllYzgtODMyNzNiOWI2MjJjXkEyXkFqcGc@._V1_.jpg" data-desc="Fortnite movie poster featuring the iconic battle royale gameplay with characters in colorful outfits, showcasing the vibrant and action-packed world of the game." onclick="openModal(this)">
@@ -236,7 +282,10 @@
         </div>
 
         <!-- Row 3: Minecraft -->
-        <div class="row-title">Minecraft</div>
+        <div class="row-container">
+            <div class="row-title">Minecraft</div>
+            <span id="difficulty-Minecraft" class="difficulty-badge"></span>
+        </div>
         <div class="grid">
             <div class="card">
                 <img src="https://store-images.s-microsoft.com/image/apps.29741.13774133678237924.b2fb64a6-d8b2-4e05-a188-b727d48563ed.f5bc1582-f67e-4ef4-8d8a-7aac86b324f9?w=562" alt="Minecraft 1" data-category="Minecraft" data-src="https://store-images.s-microsoft.com/image/apps.29741.13774133678237924.b2fb64a6-d8b2-4e05-a188-b727d48563ed.f5bc1582-f67e-4ef4-8d8a-7aac86b324f9?w=562" data-desc="Minecraft official app icon featuring the iconic blocky Creeper face, the most recognizable mob in the game that has become a symbol of Minecraft itself." onclick="openModal(this)">
@@ -331,6 +380,118 @@
                 modal.style.display = 'none';
             }
         }
+
+        // AI Difficulty Feature
+        const categories = ['Rocket League', 'Fortnite', 'Minecraft'];
+
+        // Simulated AI difficulty analysis (in production, this would call an actual AI API)
+        function generateAIDifficulty(category) {
+            // This is a simulated AI response based on common knowledge
+            // In a real implementation, you would call an AI API here
+            const difficulties = {
+                'Rocket League': { difficulty: 'Hard', reason: 'High skill ceiling with complex mechanics like aerial control, dribbling, and precise boost management. Mastering all aspects takes significant practice.' },
+                'Fortnite': { difficulty: 'Medium', reason: 'Moderate learning curve with building mechanics being the main challenge. Aim and movement are relatively standard for shooters.' },
+                'Minecraft': { difficulty: 'Medium', reason: 'Open-ended gameplay allows for various difficulty levels. Redstone mechanics and advanced building can be quite complex, but basic survival is manageable.' }
+            };
+            return difficulties[category] || { difficulty: 'Medium', reason: 'Standard game difficulty' };
+        }
+
+        function getDifficultyClass(difficulty) {
+            const difficultyMap = {
+                'Easy': 'difficulty-easy',
+                'Medium': 'difficulty-medium',
+                'Hard': 'difficulty-hard',
+                'Expert': 'difficulty-expert'
+            };
+            return difficultyMap[difficulty] || 'difficulty-medium';
+        }
+
+        function loadDifficulties() {
+            const cached = localStorage.getItem('gameDifficulties');
+            if (cached) {
+                return JSON.parse(cached);
+            }
+            return {};
+        }
+
+        function saveDifficulties(difficulties) {
+            localStorage.setItem('gameDifficulties', JSON.stringify(difficulties));
+        }
+
+        function displayDifficulties() {
+            const difficulties = loadDifficulties();
+            let needsGeneration = false;
+
+            categories.forEach(category => {
+                const badge = document.getElementById(`difficulty-${category}`);
+                if (difficulties[category]) {
+                    badge.textContent = difficulties[category].difficulty;
+                    badge.className = `difficulty-badge ${getDifficultyClass(difficulties[category].difficulty)}`;
+                    badge.title = difficulties[category].reason;
+                } else {
+                    needsGeneration = true;
+                    badge.textContent = 'Not rated';
+                    badge.className = 'difficulty-badge';
+                    badge.style.backgroundColor = '#999';
+                    badge.title = 'Click to generate AI difficulty rating';
+                    badge.style.cursor = 'pointer';
+                    badge.onclick = () => generateAndDisplayDifficulty(category);
+                }
+            });
+
+            if (needsGeneration) {
+                addGenerateAllButton();
+            }
+        }
+
+        function generateAndDisplayDifficulty(category) {
+            const difficulties = loadDifficulties();
+            const result = generateAIDifficulty(category);
+            difficulties[category] = result;
+            saveDifficulties(difficulties);
+            
+            const badge = document.getElementById(`difficulty-${category}`);
+            badge.textContent = result.difficulty;
+            badge.className = `difficulty-badge ${getDifficultyClass(result.difficulty)}`;
+            badge.title = result.reason;
+            badge.style.cursor = '';
+            badge.onclick = null;
+
+            // Remove generate all button if all difficulties are generated
+            const allGenerated = categories.every(cat => difficulties[cat]);
+            if (allGenerated) {
+                const generateBtn = document.getElementById('generateAllBtn');
+                if (generateBtn) generateBtn.remove();
+            }
+        }
+
+        function generateAllDifficulties() {
+            categories.forEach(category => {
+                if (!loadDifficulties()[category]) {
+                    generateAndDisplayDifficulty(category);
+                }
+            });
+        }
+
+        function addGenerateAllButton() {
+            if (document.getElementById('generateAllBtn')) return;
+            
+            const container = document.querySelector('.container');
+            const button = document.createElement('button');
+            button.id = 'generateAllBtn';
+            button.className = 'generate-btn';
+            button.textContent = 'Generate All Difficulties';
+            button.onclick = generateAllDifficulties;
+            button.style.marginBottom = '20px';
+            button.style.display = 'block';
+            button.style.marginLeft = 'auto';
+            button.style.marginRight = 'auto';
+            
+            container.insertBefore(button, container.firstChild);
+        }
+
+        // Initialize on page load
+        displayDifficulties();
     </script>
 </body>
 </html>
