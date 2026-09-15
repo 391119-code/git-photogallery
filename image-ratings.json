@@ -1,0 +1,38 @@
+{
+  "rl-1": {
+    "rating": 7,
+    "reason": "Iconic logo with stylized rocket car, good contrast but limited color palette"
+  },
+  "rl-2": {
+    "rating": 9,
+    "reason": "Octane car with vibrant red/blue colors, high visual appeal and good lighting"
+  },
+  "rl-3": {
+    "rating": 10,
+    "reason": "Action-packed gameplay with boost trails, very colorful and dynamic composition"
+  },
+  "fn-1": {
+    "rating": 8,
+    "reason": "Movie poster with vibrant colors and multiple characters, eye-catching design"
+  },
+  "fn-2": {
+    "rating": 9,
+    "reason": "Group of characters in unique colorful skins, high color diversity and visual interest"
+  },
+  "fn-3": {
+    "rating": 7,
+    "reason": "Character performing emote dance, fun and social but simpler visual composition"
+  },
+  "mc-1": {
+    "rating": 6,
+    "reason": "Creeper face icon, recognizable but limited to green/black pixel art style"
+  },
+  "mc-2": {
+    "rating": 10,
+    "reason": "Beautiful landscape with mountains, forests, and blocky terrain - highly colorful and detailed"
+  },
+  "mc-3": {
+    "rating": 8,
+    "reason": "Steve character in pixelated design, clean and iconic representation"
+  }
+}

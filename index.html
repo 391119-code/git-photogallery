@@ -538,150 +538,60 @@
         displayDifficulties();
         displayGameDescriptions();
 
-        // AI Image Rating System (1-10 based on colors and visual appeal)
+        // AI Image Rating System (1-10 based on visual appeal)
         const imageIds = ['rl-1', 'rl-2', 'rl-3', 'fn-1', 'fn-2', 'fn-3', 'mc-1', 'mc-2', 'mc-3'];
+        let ratingsCache = {};
 
+        // Load ratings from JSON file (pre-computed AI ratings)
+        async function loadRatingsFromFile() {
+            try {
+                const response = await fetch('image-ratings.json');
+                if (response.ok) {
+                    ratingsCache = await response.json();
+                }
+            } catch (error) {
+                console.error('Error loading ratings file:', error);
+            }
+            displayImageRatings();
+        }
+
+        // Save ratings to localStorage for persistence
+        function saveImageRatings() {
+            localStorage.setItem('imageRatings', JSON.stringify(ratingsCache));
+        }
+
+        // Load from localStorage first, then fall back to JSON file
         function loadImageRatings() {
             const cached = localStorage.getItem('imageRatings');
-            return cached ? JSON.parse(cached) : {};
-        }
-
-        function saveImageRatings(ratings) {
-            localStorage.setItem('imageRatings', JSON.stringify(ratings));
-        }
-
-        async function analyzeImageColors(imageSrc) {
-            return new Promise((resolve) => {
-                const img = new Image();
-                img.crossOrigin = 'Anonymous';
-                img.onload = () => {
-                    const canvas = document.createElement('canvas');
-                    const ctx = canvas.getContext('2d');
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    ctx.drawImage(img, 0, 0);
-                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                    const data = imageData.data;
-                    let totalPixels = 0;
-                    let brightPixels = 0;
-                    let saturatedPixels = 0;
-                    let colorfulPixels = 0;
-                    for (let i = 0; i < data.length; i += 40) {
-                        const r = data[i], g = data[i + 1], b = data[i + 2];
-                        totalPixels++;
-                        const brightness = (r + g + b) / 3;
-                        if (brightness > 150) brightPixels++;
-                        const max = Math.max(r, g, b), min = Math.min(r, g, b);
-                        const saturation = max === 0 ? 0 : (max - min) / max;
-                        if (saturation > 0.5) saturatedPixels++;
-                        if (Math.abs(r - g) > 30 || Math.abs(r - b) > 30 || Math.abs(g - b) > 30) colorfulPixels++;
-                    }
-                    const brightnessScore = brightPixels / totalPixels;
-                    const saturationScore = saturatedPixels / totalPixels;
-                    const colorScore = colorfulPixels / totalPixels;
-                    const baseScore = (brightnessScore * 2 + saturationScore * 3 + colorScore * 5) * 1.25;
-                    const rating = Math.min(10, Math.max(1, Math.round(baseScore)));
-                    resolve(rating);
-                };
-                img.onerror = () => { resolve(Math.floor(Math.random() * 8) + 3); };
-                img.src = imageSrc;
-            });
-        }
-
-        async function generateImageRating(imageId, imageSrc) {
-            const rating = await analyzeImageColors(imageSrc);
-            const reasons = {10:'Exceptionally vibrant',9:'Very colorful',8:'Highly appealing',7:'Attractive',6:'Nice colors',5:'Average',4:'Somewhat dull',3:'Limited palette',2:'Mostly dull',1:'Very dull'};
-            return {rating: rating, reason: reasons[rating] || 'Rated by AI'};
+            if (cached) {
+                ratingsCache = JSON.parse(cached);
+                displayImageRatings();
+            } else {
+                loadRatingsFromFile();
+            }
         }
 
         async function displayImageRatings() {
-            const ratings = loadImageRatings();
-            let needsGeneration = false;
             for (const imageId of imageIds) {
                 const badge = document.getElementById(`rating-${imageId}`);
                 if (!badge) continue;
-                if (ratings[imageId]) {
-                    const rating = ratings[imageId];
+                
+                if (ratingsCache[imageId]) {
+                    const rating = ratingsCache[imageId];
                     badge.textContent = `${rating.rating}/10`;
                     badge.title = `AI Rating: ${rating.rating}/10 - ${rating.reason}`;
                     if (rating.rating >= 8) badge.classList.add('rating-high');
                     else if (rating.rating <= 4) badge.classList.add('rating-low');
                 } else {
-                    needsGeneration = true;
-                    badge.textContent = 'Rate';
-                    badge.style.cursor = 'pointer';
-                    badge.title = 'Click to generate AI rating';
-                    badge.onclick = async () => {
-                        const imgElement = document.querySelector(`[data-image-id="${imageId}"]`);
-                        if (imgElement) await rateSingleImage(imageId, imgElement.dataset.src);
-                    };
+                    // Fallback if rating not found
+                    badge.textContent = 'N/A';
+                    badge.title = 'Rating not available';
                 }
             }
-            if (needsGeneration) addRateAllButton();
         }
 
-        async function rateSingleImage(imageId, imageSrc) {
-            const ratings = loadImageRatings();
-            const badge = document.getElementById(`rating-${imageId}`);
-            badge.textContent = 'Rating...';
-            badge.style.cursor = 'wait';
-            try {
-                const result = await generateImageRating(imageId, imageSrc);
-                ratings[imageId] = result;
-                saveImageRatings(ratings);
-                badge.textContent = `${result.rating}/10`;
-                badge.title = `AI Rating: ${result.rating}/10 - ${result.reason}`;
-                badge.style.cursor = '';
-                badge.onclick = null;
-                if (result.rating >= 8) badge.classList.add('rating-high');
-                else if (result.rating <= 4) badge.classList.add('rating-low');
-                const allRated = imageIds.every(id => ratings[id]);
-                if (allRated) { const rateBtn = document.getElementById('rateAllBtn'); if (rateBtn) rateBtn.remove(); }
-            } catch (error) { badge.textContent = 'Error'; badge.style.cursor = ''; }
-        }
-
-        async function rateAllImages() {
-            const ratings = loadImageRatings();
-            const rateBtn = document.getElementById('rateAllBtn');
-            if (rateBtn) rateBtn.textContent = 'Rating...';
-            for (const imageId of imageIds) {
-                if (!ratings[imageId]) {
-                    const imgElement = document.querySelector(`[data-image-id="${imageId}"]`);
-                    if (imgElement) {
-                        try {
-                            const result = await generateImageRating(imageId, imgElement.dataset.src);
-                            ratings[imageId] = result;
-                            const badge = document.getElementById(`rating-${imageId}`);
-                            if (badge) {
-                                badge.textContent = `${result.rating}/10`;
-                                badge.title = `AI Rating: ${result.rating}/10 - ${result.reason}`;
-                                if (result.rating >= 8) badge.classList.add('rating-high');
-                                else if (result.rating <= 4) badge.classList.add('rating-low');
-                            }
-                        } catch (error) { console.error(`Error rating ${imageId}:`, error); }
-                    }
-                }
-            }
-            saveImageRatings(ratings);
-            if (rateBtn) rateBtn.remove();
-        }
-
-        function addRateAllButton() {
-            if (document.getElementById('rateAllBtn')) return;
-            const container = document.querySelector('.container');
-            const button = document.createElement('button');
-            button.id = 'rateAllBtn';
-            button.className = 'generate-btn';
-            button.textContent = 'Rate All Images with AI';
-            button.onclick = rateAllImages;
-            button.style.marginBottom = '20px';
-            button.style.display = 'block';
-            button.style.marginLeft = 'auto';
-            button.style.marginRight = 'auto';
-            container.insertBefore(button, container.firstChild);
-        }
-
-        displayImageRatings();
+        // Initialize ratings on page load
+        loadImageRatings();
     </script>
 </body>
 </html>
