@@ -170,6 +170,13 @@
             text-align: center;
             padding: 10px;
         }
+        .game-description {
+            font-size: 14px;
+            color: #666;
+            margin-top: 8px;
+            line-height: 1.4;
+            padding: 0 10px;
+        }
         .difficulty-badge {
             display: inline-block;
             padding: 5px 12px;
@@ -239,6 +246,7 @@
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw4ePe5vFuEhGcKTZSGTUcjA2X2Nkpfpji844jKZLIOAjL7_2J85SyRdy6&s=10" alt="Rocket League 1" data-category="Rocket League" data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw4ePe5vFuEhGcKTZSGTUcjA2X2Nkpfpji844jKZLIOAjL7_2J85SyRdy6&s=10" data-desc="The iconic Rocket League logo featuring a stylized rocket-powered car, representing the high-speed soccer-meets-racing game that took the gaming world by storm." onclick="openModal(this)">
                 <div class="card-content">
                     <h3>Rocket League 1</h3>
+                    <p class="game-description" id="desc-Rocket League">Loading...</p>
                 </div>
             </div>
             <div class="card">
@@ -265,6 +273,7 @@
                 <img src="https://m.media-amazon.com/images/M/MV5BMGEzMDcyODAtNzY0Yy00N2E5LTllYzgtODMyNzNiOWI2MjJjXkEyXkFqcGc@._V1_.jpg" alt="Fortnite 1" data-category="Fortnite" data-src="https://m.media-amazon.com/images/M/MV5BMGEzMDcyODAtNzY0Yy00N2E5LTllYzgtODMyNzNiOWI2MjJjXkEyXkFqcGc@._V1_.jpg" data-desc="Fortnite movie poster featuring the iconic battle royale gameplay with characters in colorful outfits, showcasing the vibrant and action-packed world of the game." onclick="openModal(this)">
                 <div class="card-content">
                     <h3>Fortnite 1</h3>
+                    <p class="game-description" id="desc-Fortnite">Loading...</p>
                 </div>
             </div>
             <div class="card">
@@ -291,6 +300,7 @@
                 <img src="https://store-images.s-microsoft.com/image/apps.29741.13774133678237924.b2fb64a6-d8b2-4e05-a188-b727d48563ed.f5bc1582-f67e-4ef4-8d8a-7aac86b324f9?w=562" alt="Minecraft 1" data-category="Minecraft" data-src="https://store-images.s-microsoft.com/image/apps.29741.13774133678237924.b2fb64a6-d8b2-4e05-a188-b727d48563ed.f5bc1582-f67e-4ef4-8d8a-7aac86b324f9?w=562" data-desc="Minecraft official app icon featuring the iconic blocky Creeper face, the most recognizable mob in the game that has become a symbol of Minecraft itself." onclick="openModal(this)">
                 <div class="card-content">
                     <h3>Minecraft 1</h3>
+                    <p class="game-description" id="desc-Minecraft">Loading...</p>
                 </div>
             </div>
             <div class="card">
@@ -490,8 +500,31 @@
             container.insertBefore(button, container.firstChild);
         }
 
+        // Load game descriptions from JSON file
+        async function loadGameDescriptions() {
+            try {
+                const response = await fetch('game-descriptions.json');
+                if (!response.ok) throw new Error('Failed to load descriptions');
+                return await response.json();
+            } catch (error) {
+                console.error('Error loading game descriptions:', error);
+                return {};
+            }
+        }
+
+        async function displayGameDescriptions() {
+            const descriptions = await loadGameDescriptions();
+            categories.forEach(category => {
+                const descElement = document.getElementById(`desc-${category}`);
+                if (descElement && descriptions[category]) {
+                    descElement.textContent = descriptions[category].howToPlay;
+                }
+            });
+        }
+
         // Initialize on page load
         displayDifficulties();
+        displayGameDescriptions();
     </script>
 </body>
 </html>

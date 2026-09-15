@@ -1,0 +1,31 @@
+{
+  "Rocket League": {
+    "howToPlay": "Rocket League is a high-speed hybrid of arcade-style soccer and vehicular mayhem. Use your rocket-powered car to hit a giant ball into your opponent's goal. Master boost management, aerial control, and precise hits. Matches are 3v3 or other formats, with standard soccer rules - first team to score the most goals wins. Key controls: Drive, boost, jump, and use your car's front, back, or sides to hit the ball.",
+    "tips": [
+      "Use boost pads to maintain speed",
+      "Learn to fly for aerial hits",
+      "Dribble the ball on your car for control",
+      "Rotate back on defense"
+    ]
+  },
+  "Fortnite": {
+    "howToPlay": "Fortnite Battle Royale drops 100 players onto an island where you fight to be the last one standing. Search for weapons, shield potions, and resources while the storm circle shrinks, forcing players together. Build structures using wood, brick, or metal to create cover during fights. Collect materials by harvesting objects like trees, cars, and rocks. Eliminate opponents, loot their items, and survive until the end to claim Victory Royale.",
+    "tips": [
+      "Land at named locations for better loot",
+      "Always carry shield potions",
+      "Build quickly for cover in fights",
+      "Listen for enemy footsteps",
+      "Stay in the storm circle"
+    ]
+  },
+  "Minecraft": {
+    "howToPlay": "Minecraft is a sandbox game where you explore, build, and survive. In Survival mode, gather resources like wood, stone, and ore by breaking blocks. Craft tools, weapons, and armor to help you survive against monsters that spawn at night. Build shelters, farms, and elaborate structures. Explore caves for valuable resources, and defeat bosses like the Ender Dragon. In Creative mode, you have unlimited resources to build anything you can imagine.",
+    "tips": [
+      "Punch trees to get wood on your first day",
+      "Build a shelter before night falls",
+      "Craft a bed to skip nights",
+      "Use the crafting table to make tools",
+      "Mine stone to upgrade from wooden tools"
+    ]
+  }
+}
