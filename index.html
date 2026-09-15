@@ -177,6 +177,25 @@
             line-height: 1.4;
             padding: 0 10px;
         }
+        .rating-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 8px;
+            color: white;
+            background-color: #ff9800;
+        }
+        .rating-high {
+            background-color: #4caf50;
+        }
+        .rating-low {
+            background-color: #f44336;
+        }
+        .rating-container {
+            margin-top: 5px;
+        }
         .difficulty-badge {
             display: inline-block;
             padding: 5px 12px;
@@ -243,22 +262,25 @@
         </div>
         <div class="grid">
             <div class="card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw4ePe5vFuEhGcKTZSGTUcjA2X2Nkpfpji844jKZLIOAjL7_2J85SyRdy6&s=10" alt="Rocket League 1" data-category="Rocket League" data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw4ePe5vFuEhGcKTZSGTUcjA2X2Nkpfpji844jKZLIOAjL7_2J85SyRdy6&s=10" data-desc="The iconic Rocket League logo featuring a stylized rocket-powered car, representing the high-speed soccer-meets-racing game that took the gaming world by storm." onclick="openModal(this)">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw4ePe5vFuEhGcKTZSGTUcjA2X2Nkpfpji844jKZLIOAjL7_2J85SyRdy6&s=10" alt="Rocket League 1" data-category="Rocket League" data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw4ePe5vFuEhGcKTZSGTUcjA2X2Nkpfpji844jKZLIOAjL7_2J85SyRdy6&s=10" data-desc="The iconic Rocket League logo featuring a stylized rocket-powered car, representing the high-speed soccer-meets-racing game that took the gaming world by storm." data-image-id="rl-1" onclick="openModal(this)">
                 <div class="card-content">
                     <h3>Rocket League 1</h3>
+                    <div class="rating-container"><span class="rating-badge" id="rating-rl-1">Not rated</span></div>
                     <p class="game-description" id="desc-Rocket League">Loading...</p>
                 </div>
             </div>
             <div class="card">
-                <img src="https://img.redbull.com/images/c_limit,w_1500,h_1000/f_auto,q_auto/redbullcom/2017/08/25/f8052807-f589-4fb5-84d4-b918b03da7fc/rocket-league-octane" alt="Rocket League 2" data-category="Rocket League" data-src="https://img.redbull.com/images/c_limit,w_1500,h_1000/f_auto,q_auto/redbullcom/2017/08/25/f8052807-f589-4fb5-84d4-b918b03da7fc/rocket-league-octane" data-desc="The Octane car body, one of the most popular and iconic vehicles in Rocket League, known for its balanced hitbox and versatile gameplay." onclick="openModal(this)">
+                <img src="https://img.redbull.com/images/c_limit,w_1500,h_1000/f_auto,q_auto/redbullcom/2017/08/25/f8052807-f589-4fb5-84d4-b918b03da7fc/rocket-league-octane" alt="Rocket League 2" data-category="Rocket League" data-src="https://img.redbull.com/images/c_limit,w_1500,h_1000/f_auto,q_auto/redbullcom/2017/08/25/f8052807-f589-4fb5-84d4-b918b03da7fc/rocket-league-octane" data-desc="The Octane car body, one of the most popular and iconic vehicles in Rocket League, known for its balanced hitbox and versatile gameplay." data-image-id="rl-2" onclick="openModal(this)">
                 <div class="card-content">
                     <h3>Rocket League 2</h3>
+                    <div class="rating-container"><span class="rating-badge" id="rating-rl-2">Not rated</span></div>
                 </div>
             </div>
             <div class="card">
-                <img src="https://static.wikia.nocookie.net/ultimatepopculture/images/e/e8/Rocket_League.jpg" alt="Rocket League 3" data-category="Rocket League" data-src="https://static.wikia.nocookie.net/ultimatepopculture/images/e/e8/Rocket_League.jpg" data-desc="Action-packed Rocket League gameplay showing cars soaring through the air with boost trails, capturing the fast-paced and competitive nature of the game." onclick="openModal(this)">
+                <img src="https://static.wikia.nocookie.net/ultimatepopculture/images/e/e8/Rocket_League.jpg" alt="Rocket League 3" data-category="Rocket League" data-src="https://static.wikia.nocookie.net/ultimatepopculture/images/e/e8/Rocket_League.jpg" data-desc="Action-packed Rocket League gameplay showing cars soaring through the air with boost trails, capturing the fast-paced and competitive nature of the game." data-image-id="rl-3" onclick="openModal(this)">
                 <div class="card-content">
                     <h3>Rocket League 3</h3>
+                    <div class="rating-container"><span class="rating-badge" id="rating-rl-3">Not rated</span></div>
                 </div>
             </div>
         </div>
@@ -270,22 +292,25 @@
         </div>
         <div class="grid">
             <div class="card">
-                <img src="https://m.media-amazon.com/images/M/MV5BMGEzMDcyODAtNzY0Yy00N2E5LTllYzgtODMyNzNiOWI2MjJjXkEyXkFqcGc@._V1_.jpg" alt="Fortnite 1" data-category="Fortnite" data-src="https://m.media-amazon.com/images/M/MV5BMGEzMDcyODAtNzY0Yy00N2E5LTllYzgtODMyNzNiOWI2MjJjXkEyXkFqcGc@._V1_.jpg" data-desc="Fortnite movie poster featuring the iconic battle royale gameplay with characters in colorful outfits, showcasing the vibrant and action-packed world of the game." onclick="openModal(this)">
+                <img src="https://m.media-amazon.com/images/M/MV5BMGEzMDcyODAtNzY0Yy00N2E5LTllYzgtODMyNzNiOWI2MjJjXkEyXkFqcGc@._V1_.jpg" alt="Fortnite 1" data-category="Fortnite" data-src="https://m.media-amazon.com/images/M/MV5BMGEzMDcyODAtNzY0Yy00N2E5LTllYzgtODMyNzNiOWI2MjJjXkEyXkFqcGc@._V1_.jpg" data-desc="Fortnite movie poster featuring the iconic battle royale gameplay with characters in colorful outfits, showcasing the vibrant and action-packed world of the game." data-image-id="fn-1" onclick="openModal(this)">
                 <div class="card-content">
                     <h3>Fortnite 1</h3>
+                    <div class="rating-container"><span class="rating-badge" id="rating-fn-1">Not rated</span></div>
                     <p class="game-description" id="desc-Fortnite">Loading...</p>
                 </div>
             </div>
             <div class="card">
-                <img src="https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/img_3658_2.jpeg" alt="Fortnite 2" data-category="Fortnite" data-src="https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/img_3658_2.jpeg" data-desc="A group of Fortnite characters in various unique skins, demonstrating the games extensive customization options and creative character designs." onclick="openModal(this)">
+                <img src="https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/img_3658_2.jpeg" alt="Fortnite 2" data-category="Fortnite" data-src="https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/img_3658_2.jpeg" data-desc="A group of Fortnite characters in various unique skins, demonstrating the games extensive customization options and creative character designs." data-image-id="fn-2" onclick="openModal(this)">
                 <div class="card-content">
                     <h3>Fortnite 2</h3>
+                    <div class="rating-container"><span class="rating-badge" id="rating-fn-2">Not rated</span></div>
                 </div>
             </div>
             <div class="card">
-                <img src="https://dropinblog.net/34253310/files/featured/imagem-2024-09-26-103919931.png" alt="Fortnite 3" data-category="Fortnite" data-src="https://dropinblog.net/34253310/files/featured/imagem-2024-09-26-103919931.png" data-desc="Fortnite character performing an emote dance, highlighting the fun and social aspects of the game that players love to share with friends." onclick="openModal(this)">
+                <img src="https://dropinblog.net/34253310/files/featured/imagem-2024-09-26-103919931.png" alt="Fortnite 3" data-category="Fortnite" data-src="https://dropinblog.net/34253310/files/featured/imagem-2024-09-26-103919931.png" data-desc="Fortnite character performing an emote dance, highlighting the fun and social aspects of the game that players love to share with friends." data-image-id="fn-3" onclick="openModal(this)">
                 <div class="card-content">
                     <h3>Fortnite 3</h3>
+                    <div class="rating-container"><span class="rating-badge" id="rating-fn-3">Not rated</span></div>
                 </div>
             </div>
         </div>
@@ -297,22 +322,25 @@
         </div>
         <div class="grid">
             <div class="card">
-                <img src="https://store-images.s-microsoft.com/image/apps.29741.13774133678237924.b2fb64a6-d8b2-4e05-a188-b727d48563ed.f5bc1582-f67e-4ef4-8d8a-7aac86b324f9?w=562" alt="Minecraft 1" data-category="Minecraft" data-src="https://store-images.s-microsoft.com/image/apps.29741.13774133678237924.b2fb64a6-d8b2-4e05-a188-b727d48563ed.f5bc1582-f67e-4ef4-8d8a-7aac86b324f9?w=562" data-desc="Minecraft official app icon featuring the iconic blocky Creeper face, the most recognizable mob in the game that has become a symbol of Minecraft itself." onclick="openModal(this)">
+                <img src="https://store-images.s-microsoft.com/image/apps.29741.13774133678237924.b2fb64a6-d8b2-4e05-a188-b727d48563ed.f5bc1582-f67e-4ef4-8d8a-7aac86b324f9?w=562" alt="Minecraft 1" data-category="Minecraft" data-src="https://store-images.s-microsoft.com/image/apps.29741.13774133678237924.b2fb64a6-d8b2-4e05-a188-b727d48563ed.f5bc1582-f67e-4ef4-8d8a-7aac86b324f9?w=562" data-desc="Minecraft official app icon featuring the iconic blocky Creeper face, the most recognizable mob in the game that has become a symbol of Minecraft itself." data-image-id="mc-1" onclick="openModal(this)">
                 <div class="card-content">
                     <h3>Minecraft 1</h3>
+                    <div class="rating-container"><span class="rating-badge" id="rating-mc-1">Not rated</span></div>
                     <p class="game-description" id="desc-Minecraft">Loading...</p>
                 </div>
             </div>
             <div class="card">
-                <img src="https://cdn.shopify.com/s/files/1/0759/8099/6937/files/minecraft-Paysage-montagnes_1024x1024.jpg?v=1771166065" alt="Minecraft 2" data-category="Minecraft" data-src="https://cdn.shopify.com/s/files/1/0759/8099/6937/files/minecraft-Paysage-montagnes_1024x1024.jpg?v=1771166065" data-desc="Beautiful Minecraft landscape showcasing towering mountains, lush forests, and the games signature blocky terrain, demonstrating the creative building possibilities." onclick="openModal(this)">
+                <img src="https://cdn.shopify.com/s/files/1/0759/8099/6937/files/minecraft-Paysage-montagnes_1024x1024.jpg?v=1771166065" alt="Minecraft 2" data-category="Minecraft" data-src="https://cdn.shopify.com/s/files/1/0759/8099/6937/files/minecraft-Paysage-montagnes_1024x1024.jpg?v=1771166065" data-desc="Beautiful Minecraft landscape showcasing towering mountains, lush forests, and the games signature blocky terrain, demonstrating the creative building possibilities." data-image-id="mc-2" onclick="openModal(this)">
                 <div class="card-content">
                     <h3>Minecraft 2</h3>
+                    <div class="rating-container"><span class="rating-badge" id="rating-mc-2">Not rated</span></div>
                 </div>
             </div>
             <div class="card">
-                <img src="https://assets.nintendo.com/image/upload/c_limit,f_auto,h_300,q_auto,w_500/v1/store/software/switch/70010000000964/Video/posters/a2761b7c2a1626561589be1efdebc15d8803ba2bf3fc570c81e50614ac2e5187" alt="Minecraft 3" data-category="Minecraft" data-src="https://assets.nintendo.com/image/upload/c_limit,f_auto,h_300,q_auto,w_500/v1/store/software/switch/70010000000964/Video/posters/a2761b7c2a1626561589be1efdebc15d8803ba2bf3fc570c81e50614ac2e5187" data-desc="Minecraft Nintendo Switch poster art featuring Steve, the default player character, in his classic pixelated design ready for adventure in the blocky world." onclick="openModal(this)">
+                <img src="https://assets.nintendo.com/image/upload/c_limit,f_auto,h_300,q_auto,w_500/v1/store/software/switch/70010000000964/Video/posters/a2761b7c2a1626561589be1efdebc15d8803ba2bf3fc570c81e50614ac2e5187" alt="Minecraft 3" data-category="Minecraft" data-src="https://assets.nintendo.com/image/upload/c_limit,f_auto,h_300,q_auto,w_500/v1/store/software/switch/70010000000964/Video/posters/a2761b7c2a1626561589be1efdebc15d8803ba2bf3fc570c81e50614ac2e5187" data-desc="Minecraft Nintendo Switch poster art featuring Steve, the default player character, in his classic pixelated design ready for adventure in the blocky world." data-image-id="mc-3" onclick="openModal(this)">
                 <div class="card-content">
                     <h3>Minecraft 3</h3>
+                    <div class="rating-container"><span class="rating-badge" id="rating-mc-3">Not rated</span></div>
                 </div>
             </div>
         </div>
@@ -525,6 +553,151 @@
         // Initialize on page load
         displayDifficulties();
         displayGameDescriptions();
+
+        // AI Image Rating System (1-10 based on colors and visual appeal)
+        const imageIds = ['rl-1', 'rl-2', 'rl-3', 'fn-1', 'fn-2', 'fn-3', 'mc-1', 'mc-2', 'mc-3'];
+
+        function loadImageRatings() {
+            const cached = localStorage.getItem('imageRatings');
+            return cached ? JSON.parse(cached) : {};
+        }
+
+        function saveImageRatings(ratings) {
+            localStorage.setItem('imageRatings', JSON.stringify(ratings));
+        }
+
+        async function analyzeImageColors(imageSrc) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.crossOrigin = 'Anonymous';
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imageData.data;
+                    let totalPixels = 0;
+                    let brightPixels = 0;
+                    let saturatedPixels = 0;
+                    let colorfulPixels = 0;
+                    for (let i = 0; i < data.length; i += 40) {
+                        const r = data[i], g = data[i + 1], b = data[i + 2];
+                        totalPixels++;
+                        const brightness = (r + g + b) / 3;
+                        if (brightness > 150) brightPixels++;
+                        const max = Math.max(r, g, b), min = Math.min(r, g, b);
+                        const saturation = max === 0 ? 0 : (max - min) / max;
+                        if (saturation > 0.5) saturatedPixels++;
+                        if (Math.abs(r - g) > 30 || Math.abs(r - b) > 30 || Math.abs(g - b) > 30) colorfulPixels++;
+                    }
+                    const brightnessScore = brightPixels / totalPixels;
+                    const saturationScore = saturatedPixels / totalPixels;
+                    const colorScore = colorfulPixels / totalPixels;
+                    const baseScore = (brightnessScore * 2 + saturationScore * 3 + colorScore * 5) * 1.25;
+                    const rating = Math.min(10, Math.max(1, Math.round(baseScore)));
+                    resolve(rating);
+                };
+                img.onerror = () => { resolve(Math.floor(Math.random() * 8) + 3); };
+                img.src = imageSrc;
+            });
+        }
+
+        async function generateImageRating(imageId, imageSrc) {
+            const rating = await analyzeImageColors(imageSrc);
+            const reasons = {10:'Exceptionally vibrant',9:'Very colorful',8:'Highly appealing',7:'Attractive',6:'Nice colors',5:'Average',4:'Somewhat dull',3:'Limited palette',2:'Mostly dull',1:'Very dull'};
+            return {rating: rating, reason: reasons[rating] || 'Rated by AI'};
+        }
+
+        async function displayImageRatings() {
+            const ratings = loadImageRatings();
+            let needsGeneration = false;
+            for (const imageId of imageIds) {
+                const badge = document.getElementById(`rating-${imageId}`);
+                if (!badge) continue;
+                if (ratings[imageId]) {
+                    const rating = ratings[imageId];
+                    badge.textContent = `${rating.rating}/10`;
+                    badge.title = `AI Rating: ${rating.rating}/10 - ${rating.reason}`;
+                    if (rating.rating >= 8) badge.classList.add('rating-high');
+                    else if (rating.rating <= 4) badge.classList.add('rating-low');
+                } else {
+                    needsGeneration = true;
+                    badge.textContent = 'Rate';
+                    badge.style.cursor = 'pointer';
+                    badge.title = 'Click to generate AI rating';
+                    badge.onclick = async () => {
+                        const imgElement = document.querySelector(`[data-image-id="${imageId}"]`);
+                        if (imgElement) await rateSingleImage(imageId, imgElement.dataset.src);
+                    };
+                }
+            }
+            if (needsGeneration) addRateAllButton();
+        }
+
+        async function rateSingleImage(imageId, imageSrc) {
+            const ratings = loadImageRatings();
+            const badge = document.getElementById(`rating-${imageId}`);
+            badge.textContent = 'Rating...';
+            badge.style.cursor = 'wait';
+            try {
+                const result = await generateImageRating(imageId, imageSrc);
+                ratings[imageId] = result;
+                saveImageRatings(ratings);
+                badge.textContent = `${result.rating}/10`;
+                badge.title = `AI Rating: ${result.rating}/10 - ${result.reason}`;
+                badge.style.cursor = '';
+                badge.onclick = null;
+                if (result.rating >= 8) badge.classList.add('rating-high');
+                else if (result.rating <= 4) badge.classList.add('rating-low');
+                const allRated = imageIds.every(id => ratings[id]);
+                if (allRated) { const rateBtn = document.getElementById('rateAllBtn'); if (rateBtn) rateBtn.remove(); }
+            } catch (error) { badge.textContent = 'Error'; badge.style.cursor = ''; }
+        }
+
+        async function rateAllImages() {
+            const ratings = loadImageRatings();
+            const rateBtn = document.getElementById('rateAllBtn');
+            if (rateBtn) rateBtn.textContent = 'Rating...';
+            for (const imageId of imageIds) {
+                if (!ratings[imageId]) {
+                    const imgElement = document.querySelector(`[data-image-id="${imageId}"]`);
+                    if (imgElement) {
+                        try {
+                            const result = await generateImageRating(imageId, imgElement.dataset.src);
+                            ratings[imageId] = result;
+                            const badge = document.getElementById(`rating-${imageId}`);
+                            if (badge) {
+                                badge.textContent = `${result.rating}/10`;
+                                badge.title = `AI Rating: ${result.rating}/10 - ${result.reason}`;
+                                if (result.rating >= 8) badge.classList.add('rating-high');
+                                else if (result.rating <= 4) badge.classList.add('rating-low');
+                            }
+                        } catch (error) { console.error(`Error rating ${imageId}:`, error); }
+                    }
+                }
+            }
+            saveImageRatings(ratings);
+            if (rateBtn) rateBtn.remove();
+        }
+
+        function addRateAllButton() {
+            if (document.getElementById('rateAllBtn')) return;
+            const container = document.querySelector('.container');
+            const button = document.createElement('button');
+            button.id = 'rateAllBtn';
+            button.className = 'generate-btn';
+            button.textContent = 'Rate All Images with AI';
+            button.onclick = rateAllImages;
+            button.style.marginBottom = '20px';
+            button.style.display = 'block';
+            button.style.marginLeft = 'auto';
+            button.style.marginRight = 'auto';
+            container.insertBefore(button, container.firstChild);
+        }
+
+        displayImageRatings();
     </script>
 </body>
 </html>
