@@ -194,7 +194,31 @@
             background-color: #f44336;
         }
         .rating-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
             margin-top: 5px;
+        }
+        .rate-btn {
+            padding: 4px 10px;
+            border: 0;
+            border-radius: 12px;
+            color: #fff;
+            background: #007bff;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .rate-btn:hover {
+            background: #0056b3;
+        }
+        .rate-btn:disabled {
+            background: #6c757d;
+            cursor: default;
+        }
+        .rating-reason {
+            color: #666;
+            font-size: 12px;
         }
         .difficulty-badge {
             display: inline-block;
@@ -265,7 +289,7 @@
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw4ePe5vFuEhGcKTZSGTUcjA2X2Nkpfpji844jKZLIOAjL7_2J85SyRdy6&s=10" alt="Rocket League 1" data-category="Rocket League" data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw4ePe5vFuEhGcKTZSGTUcjA2X2Nkpfpji844jKZLIOAjL7_2J85SyRdy6&s=10" data-desc="The iconic Rocket League logo featuring a stylized rocket-powered car, representing the high-speed soccer-meets-racing game that took the gaming world by storm." data-image-id="rl-1" onclick="openModal(this)">
                 <div class="card-content">
                     <h3>Rocket League 1</h3>
-                    <div class="rating-container"><span class="rating-badge" id="rating-rl-1">Not rated</span></div>
+                    <div class="rating-container"><button class="rate-btn" type="button" data-image-id="rl-1">Rate</button><span class="rating-badge" id="rating-rl-1">Not rated</span><span class="rating-reason" id="reason-rl-1"></span></div>
                     <p class="game-description">Rocket League is a high-speed hybrid of arcade-style soccer and vehicular mayhem. Use your rocket-powered car to hit a giant ball into your opponent's goal.</p>
                 </div>
             </div>
@@ -273,7 +297,7 @@
                 <img src="https://img.redbull.com/images/c_limit,w_1500,h_1000/f_auto,q_auto/redbullcom/2017/08/25/f8052807-f589-4fb5-84d4-b918b03da7fc/rocket-league-octane" alt="Rocket League 2" data-category="Rocket League" data-src="https://img.redbull.com/images/c_limit,w_1500,h_1000/f_auto,q_auto/redbullcom/2017/08/25/f8052807-f589-4fb5-84d4-b918b03da7fc/rocket-league-octane" data-desc="The Octane car body, one of the most popular and iconic vehicles in Rocket League, known for its balanced hitbox and versatile gameplay." data-image-id="rl-2" onclick="openModal(this)">
                 <div class="card-content">
                     <h3>Rocket League 2</h3>
-                    <div class="rating-container"><span class="rating-badge" id="rating-rl-2">Not rated</span></div>
+                    <div class="rating-container"><button class="rate-btn" type="button" data-image-id="rl-2">Rate</button><span class="rating-badge" id="rating-rl-2">Not rated</span><span class="rating-reason" id="reason-rl-2"></span></div>
                     <p class="game-description">Master boost management, aerial control, and precise hits. Matches are 3v3 with standard soccer rules - first team to score the most goals wins.</p>
                 </div>
             </div>
@@ -281,7 +305,7 @@
                 <img src="https://static.wikia.nocookie.net/ultimatepopculture/images/e/e8/Rocket_League.jpg" alt="Rocket League 3" data-category="Rocket League" data-src="https://static.wikia.nocookie.net/ultimatepopculture/images/e/e8/Rocket_League.jpg" data-desc="Action-packed Rocket League gameplay showing cars soaring through the air with boost trails, capturing the fast-paced and competitive nature of the game." data-image-id="rl-3" onclick="openModal(this)">
                 <div class="card-content">
                     <h3>Rocket League 3</h3>
-                    <div class="rating-container"><span class="rating-badge" id="rating-rl-3">Not rated</span></div>
+                    <div class="rating-container"><button class="rate-btn" type="button" data-image-id="rl-3">Rate</button><span class="rating-badge" id="rating-rl-3">Not rated</span><span class="rating-reason" id="reason-rl-3"></span></div>
                     <p class="game-description">Key controls: Drive, boost, jump, and use your car's front, back, or sides to hit the ball. Dribble the ball on your car for control and rotate back on defense.</p>
                 </div>
             </div>
@@ -297,7 +321,7 @@
                 <img src="https://m.media-amazon.com/images/M/MV5BMGEzMDcyODAtNzY0Yy00N2E5LTllYzgtODMyNzNiOWI2MjJjXkEyXkFqcGc@._V1_.jpg" alt="Fortnite 1" data-category="Fortnite" data-src="https://m.media-amazon.com/images/M/MV5BMGEzMDcyODAtNzY0Yy00N2E5LTllYzgtODMyNzNiOWI2MjJjXkEyXkFqcGc@._V1_.jpg" data-desc="Fortnite movie poster featuring the iconic battle royale gameplay with characters in colorful outfits, showcasing the vibrant and action-packed world of the game." data-image-id="fn-1" onclick="openModal(this)">
                 <div class="card-content">
                     <h3>Fortnite 1</h3>
-                    <div class="rating-container"><span class="rating-badge" id="rating-fn-1">Not rated</span></div>
+                    <div class="rating-container"><button class="rate-btn" type="button" data-image-id="fn-1">Rate</button><span class="rating-badge" id="rating-fn-1">Not rated</span><span class="rating-reason" id="reason-fn-1"></span></div>
                     <p class="game-description">Fortnite Battle Royale drops 100 players onto an island where you fight to be the last one standing. Search for weapons and resources.</p>
                 </div>
             </div>
@@ -305,7 +329,7 @@
                 <img src="https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/img_3658_2.jpeg" alt="Fortnite 2" data-category="Fortnite" data-src="https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/img_3658_2.jpeg" data-desc="A group of Fortnite characters in various unique skins, demonstrating the games extensive customization options and creative character designs." data-image-id="fn-2" onclick="openModal(this)">
                 <div class="card-content">
                     <h3>Fortnite 2</h3>
-                    <div class="rating-container"><span class="rating-badge" id="rating-fn-2">Not rated</span></div>
+                    <div class="rating-container"><button class="rate-btn" type="button" data-image-id="fn-2">Rate</button><span class="rating-badge" id="rating-fn-2">Not rated</span><span class="rating-reason" id="reason-fn-2"></span></div>
                     <p class="game-description">Build structures using wood, brick, or metal to create cover during fights. The storm circle shrinks, forcing players together.</p>
                 </div>
             </div>
@@ -313,7 +337,7 @@
                 <img src="https://dropinblog.net/34253310/files/featured/imagem-2024-09-26-103919931.png" alt="Fortnite 3" data-category="Fortnite" data-src="https://dropinblog.net/34253310/files/featured/imagem-2024-09-26-103919931.png" data-desc="Fortnite character performing an emote dance, highlighting the fun and social aspects of the game that players love to share with friends." data-image-id="fn-3" onclick="openModal(this)">
                 <div class="card-content">
                     <h3>Fortnite 3</h3>
-                    <div class="rating-container"><span class="rating-badge" id="rating-fn-3">Not rated</span></div>
+                    <div class="rating-container"><button class="rate-btn" type="button" data-image-id="fn-3">Rate</button><span class="rating-badge" id="rating-fn-3">Not rated</span><span class="rating-reason" id="reason-fn-3"></span></div>
                     <p class="game-description">Eliminate opponents, loot their items, and survive until the end to claim Victory Royale. Collect materials by harvesting objects.</p>
                 </div>
             </div>
@@ -329,7 +353,7 @@
                 <img src="https://store-images.s-microsoft.com/image/apps.29741.13774133678237924.b2fb64a6-d8b2-4e05-a188-b727d48563ed.f5bc1582-f67e-4ef4-8d8a-7aac86b324f9?w=562" alt="Minecraft 1" data-category="Minecraft" data-src="https://store-images.s-microsoft.com/image/apps.29741.13774133678237924.b2fb64a6-d8b2-4e05-a188-b727d48563ed.f5bc1582-f67e-4ef4-8d8a-7aac86b324f9?w=562" data-desc="Minecraft official app icon featuring the iconic blocky Creeper face, the most recognizable mob in the game that has become a symbol of Minecraft itself." data-image-id="mc-1" onclick="openModal(this)">
                 <div class="card-content">
                     <h3>Minecraft 1</h3>
-                    <div class="rating-container"><span class="rating-badge" id="rating-mc-1">Not rated</span></div>
+                    <div class="rating-container"><button class="rate-btn" type="button" data-image-id="mc-1">Rate</button><span class="rating-badge" id="rating-mc-1">Not rated</span><span class="rating-reason" id="reason-mc-1"></span></div>
                     <p class="game-description">Minecraft is a sandbox game where you explore, build, and survive. Gather resources like wood, stone, and ore by breaking blocks.</p>
                 </div>
             </div>
@@ -337,7 +361,7 @@
                 <img src="https://cdn.shopify.com/s/files/1/0759/8099/6937/files/minecraft-Paysage-montagnes_1024x1024.jpg?v=1771166065" alt="Minecraft 2" data-category="Minecraft" data-src="https://cdn.shopify.com/s/files/1/0759/8099/6937/files/minecraft-Paysage-montagnes_1024x1024.jpg?v=1771166065" data-desc="Beautiful Minecraft landscape showcasing towering mountains, lush forests, and the games signature blocky terrain, demonstrating the creative building possibilities." data-image-id="mc-2" onclick="openModal(this)">
                 <div class="card-content">
                     <h3>Minecraft 2</h3>
-                    <div class="rating-container"><span class="rating-badge" id="rating-mc-2">Not rated</span></div>
+                    <div class="rating-container"><button class="rate-btn" type="button" data-image-id="mc-2">Rate</button><span class="rating-badge" id="rating-mc-2">Not rated</span><span class="rating-reason" id="reason-mc-2"></span></div>
                     <p class="game-description">Craft tools, weapons, and armor to survive against monsters that spawn at night. Build shelters, farms, and elaborate structures.</p>
                 </div>
             </div>
@@ -345,7 +369,7 @@
                 <img src="https://assets.nintendo.com/image/upload/c_limit,f_auto,h_300,q_auto,w_500/v1/store/software/switch/70010000000964/Video/posters/a2761b7c2a1626561589be1efdebc15d8803ba2bf3fc570c81e50614ac2e5187" alt="Minecraft 3" data-category="Minecraft" data-src="https://assets.nintendo.com/image/upload/c_limit,f_auto,h_300,q_auto,w_500/v1/store/software/switch/70010000000964/Video/posters/a2761b7c2a1626561589be1efdebc15d8803ba2bf3fc570c81e50614ac2e5187" data-desc="Minecraft Nintendo Switch poster art featuring Steve, the default player character, in his classic pixelated design ready for adventure in the blocky world." data-image-id="mc-3" onclick="openModal(this)">
                 <div class="card-content">
                     <h3>Minecraft 3</h3>
-                    <div class="rating-container"><span class="rating-badge" id="rating-mc-3">Not rated</span></div>
+                    <div class="rating-container"><button class="rate-btn" type="button" data-image-id="mc-3">Rate</button><span class="rating-badge" id="rating-mc-3">Not rated</span><span class="rating-reason" id="reason-mc-3"></span></div>
                     <p class="game-description">Explore caves for valuable resources, defeat bosses like the Ender Dragon. In Creative mode, you have unlimited resources to build anything.</p>
                 </div>
             </div>
@@ -540,58 +564,69 @@
 
         // AI Image Rating System (1-10 based on visual appeal)
         const imageIds = ['rl-1', 'rl-2', 'rl-3', 'fn-1', 'fn-2', 'fn-3', 'mc-1', 'mc-2', 'mc-3'];
-        let ratingsCache = {};
+        const defaultRatings = {
+            'rl-1': { rating: 7, reason: 'Iconic logo with strong contrast and a clear focal point.' },
+            'rl-2': { rating: 9, reason: 'Vibrant colors, strong lighting, and a visually engaging subject.' },
+            'rl-3': { rating: 10, reason: 'Dynamic action, colorful composition, and excellent visual energy.' },
+            'fn-1': { rating: 8, reason: 'Eye-catching colors and a detailed composition with strong visual interest.' },
+            'fn-2': { rating: 9, reason: 'High color variety and an engaging arrangement of recognizable characters.' },
+            'fn-3': { rating: 7, reason: 'Fun subject and clear composition with a simpler visual arrangement.' },
+            'mc-1': { rating: 6, reason: 'Highly recognizable icon with a focused but limited color palette.' },
+            'mc-2': { rating: 10, reason: 'Colorful, detailed landscape with strong depth and visual variety.' },
+            'mc-3': { rating: 8, reason: 'Clean, iconic character design with a distinctive visual style.' }
+        };
+        let ratingsCache = { ...defaultRatings };
 
-        // Load ratings from JSON file (pre-computed AI ratings)
-        async function loadRatingsFromFile() {
-            try {
-                const response = await fetch('image-ratings.json');
-                if (response.ok) {
-                    ratingsCache = await response.json();
-                }
-            } catch (error) {
-                console.error('Error loading ratings file:', error);
-            }
-            displayImageRatings();
-        }
-
-        // Save ratings to localStorage for persistence
         function saveImageRatings() {
             localStorage.setItem('imageRatings', JSON.stringify(ratingsCache));
         }
 
-        // Load from localStorage first, then fall back to JSON file
-        function loadImageRatings() {
-            const cached = localStorage.getItem('imageRatings');
-            if (cached) {
-                ratingsCache = JSON.parse(cached);
-                displayImageRatings();
-            } else {
-                loadRatingsFromFile();
+        function showRating(imageId) {
+            const rating = ratingsCache[imageId] || defaultRatings[imageId];
+            const badge = document.getElementById(`rating-${imageId}`);
+            const reason = document.getElementById(`reason-${imageId}`);
+            const button = document.querySelector(`.rate-btn[data-image-id="${imageId}"]`);
+            if (!rating || !badge) return;
+
+            badge.textContent = `${rating.rating}/10`;
+            badge.title = `AI Rating: ${rating.rating}/10 - ${rating.reason}`;
+            badge.classList.remove('rating-high', 'rating-low');
+            if (rating.rating >= 8) badge.classList.add('rating-high');
+            if (rating.rating <= 4) badge.classList.add('rating-low');
+            if (reason) reason.textContent = `AI: ${rating.reason}`;
+            if (button) {
+                button.textContent = 'Rated';
+                button.disabled = true;
+                button.setAttribute('aria-label', `This image is rated ${rating.rating} out of 10`);
             }
         }
 
-        async function displayImageRatings() {
-            for (const imageId of imageIds) {
-                const badge = document.getElementById(`rating-${imageId}`);
-                if (!badge) continue;
-                
-                if (ratingsCache[imageId]) {
-                    const rating = ratingsCache[imageId];
-                    badge.textContent = `${rating.rating}/10`;
-                    badge.title = `AI Rating: ${rating.rating}/10 - ${rating.reason}`;
-                    if (rating.rating >= 8) badge.classList.add('rating-high');
-                    else if (rating.rating <= 4) badge.classList.add('rating-low');
-                } else {
-                    // Fallback if rating not found
-                    badge.textContent = 'N/A';
-                    badge.title = 'Rating not available';
-                }
+        function rateImage(imageId) {
+            ratingsCache[imageId] = ratingsCache[imageId] || defaultRatings[imageId];
+            saveImageRatings();
+            showRating(imageId);
+        }
+
+        function displaySavedRatings() {
+            const saved = localStorage.getItem('imageRatings');
+            if (!saved) return;
+            try {
+                ratingsCache = { ...defaultRatings, ...JSON.parse(saved) };
+                Object.keys(JSON.parse(saved)).forEach(showRating);
+            } catch (error) {
+                localStorage.removeItem('imageRatings');
             }
         }
 
-        // Initialize ratings on page load
-        loadImageRatings();
+        document.querySelectorAll('.rate-btn').forEach(button => {
+            button.addEventListener('click', () => rateImage(button.dataset.imageId));
+        });
+
+        // Use the packaged ratings when available, while retaining a local fallback.
+        fetch('image-ratings.json')
+            .then(response => response.ok ? response.json() : {})
+            .then(ratings => { ratingsCache = { ...defaultRatings, ...ratings }; displaySavedRatings(); })
+            .catch(() => displaySavedRatings());
     </script>
 </body>
 </html>
